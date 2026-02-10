@@ -6,20 +6,17 @@
  }
  
  const ValentineCard = ({ onYes }: ValentineCardProps) => {
-  const [noButtonScale, setNoButtonScale] = useState(1);
-  const [yesButtonScale, setYesButtonScale] = useState(1);
-  const [noButtonVisible, setNoButtonVisible] = useState(true);
-
-  const handleNoClick = () => {
-    const newNoScale = noButtonScale * 0.7;
-    const newYesScale = yesButtonScale * 1.3;
-    if (newNoScale < 0.1) {
-      setNoButtonVisible(false);
-    } else {
-      setNoButtonScale(newNoScale);
-    }
-    setYesButtonScale(newYesScale);
-  };
+   const [noButtonScale, setNoButtonScale] = useState(1);
+   const [noButtonVisible, setNoButtonVisible] = useState(true);
+ 
+   const handleNoClick = () => {
+     const newScale = noButtonScale * 0.7;
+     if (newScale < 0.1) {
+       setNoButtonVisible(false);
+     } else {
+       setNoButtonScale(newScale);
+     }
+   };
  
    return (
      <motion.div
@@ -70,16 +67,14 @@
          animate={{ y: 0, opacity: 1 }}
          transition={{ delay: 0.5 }}
        >
-          <motion.button
-            className="btn-yes"
-            onClick={onYes}
-            animate={{ scale: yesButtonScale }}
-            transition={{ type: "spring", stiffness: 300, damping: 15 }}
-            whileHover={{ scale: yesButtonScale * 1.1 }}
-            whileTap={{ scale: yesButtonScale * 0.95 }}
-          >
-            Sí 💖
-          </motion.button>
+         <motion.button
+           className="btn-yes"
+           onClick={onYes}
+           whileHover={{ scale: 1.1 }}
+           whileTap={{ scale: 0.95 }}
+         >
+           Sí 💖
+         </motion.button>
  
          <AnimatePresence>
            {noButtonVisible && (
