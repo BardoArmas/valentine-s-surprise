@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Envelope from "@/components/Envelope";
 import ValentineCard from "@/components/ValentineCard";
@@ -11,20 +11,10 @@ type Stage = "envelope" | "question" | "success";
 const Index = () => {
   const [stage, setStage] = useState<Stage>("envelope");
   const [showConfetti, setShowConfetti] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const handleOpenEnvelope = () => {
     setStage("question");
     setShowConfetti(true);
-    // Play romantic music
-    if (!audioRef.current) {
-      audioRef.current = new Audio("/romantic-music.mp3");
-      audioRef.current.loop = true;
-      audioRef.current.volume = 0.3;
-    }
-    audioRef.current.play().catch(() => {
-      // Autoplay might be blocked, that's ok
-    });
     // Hide confetti after animation
     setTimeout(() => setShowConfetti(false), 4000);
   };
