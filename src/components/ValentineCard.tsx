@@ -10,11 +10,13 @@
    const [noButtonVisible, setNoButtonVisible] = useState(true);
  
   const handleYesClick = () => {
-    // Open WhatsApp with pre-filled message
-    const phone = "522228440643";
-    const message = encodeURIComponent("¡Sí quiero ser tu San Valentín! 💕❤️");
-    window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
     onYes();
+    // Open WhatsApp after 15 seconds to allow viewing the animation
+    setTimeout(() => {
+      const phone = "522228440643";
+      const message = encodeURIComponent("¡Sí quiero ser tu San Valentín! 💕❤️");
+      window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+    }, 15000);
   };
 
   const handleNoClick = () => {
