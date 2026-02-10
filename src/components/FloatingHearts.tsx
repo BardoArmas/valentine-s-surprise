@@ -81,7 +81,7 @@ const FloatingHearts = () => {
 
   return (
     <>
-      <div className="fixed inset-0 overflow-hidden z-40">
+      <div className="fixed inset-0 overflow-hidden z-40 pointer-events-none">
         {hearts.map((heart) => (
           <motion.div
             key={heart.id}
