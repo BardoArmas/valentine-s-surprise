@@ -9,7 +9,15 @@
    const [noButtonScale, setNoButtonScale] = useState(1);
    const [noButtonVisible, setNoButtonVisible] = useState(true);
  
-   const handleNoClick = () => {
+  const handleYesClick = () => {
+    // Open WhatsApp with pre-filled message
+    const phone = "522228440643";
+    const message = encodeURIComponent("¡Sí quiero ser tu San Valentín! 💕❤️");
+    window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+    onYes();
+  };
+
+  const handleNoClick = () => {
      const newScale = noButtonScale * 0.7;
      if (newScale < 0.1) {
        setNoButtonVisible(false);
@@ -69,7 +77,7 @@
        >
          <motion.button
            className="btn-yes"
-           onClick={onYes}
+           onClick={handleYesClick}
            whileHover={{ scale: 1.1 }}
            whileTap={{ scale: 0.95 }}
          >
